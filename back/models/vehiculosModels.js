@@ -1,5 +1,6 @@
-const db = require('../database');
-const queries = require('../querys/queriesVehiculo');
+const db = require("../database");
+const queriesVehiculo = require("../querys/queriesVehiculo");
+const queries = require("../querys/queriesVehiculo");
 
 //vehiculos
 const getAllVehiculos = async () => {
@@ -29,10 +30,23 @@ const dropVehiculo = async (id) => {
   } catch (err) {
     throw err;
   }
-
 };
 
-const updateVehiculo = async (patente, idTipoVehiculo,idModelo,idCliente, id) => {
+const upVehiculo = async (id) => {
+  try {
+    const query = queries.upVehiculo;
+    await db.query(query, [id]);
+  } catch (err) {
+    throw err;
+  }
+};
+const updateVehiculo = async (
+  patente,
+  idTipoVehiculo,
+  idModelo,
+  idCliente,
+  id
+) => {
   try {
     const query = queries.updateVehiculo;
     await db.query(query, [patente, idTipoVehiculo, idModelo, idCliente, id]);
@@ -41,9 +55,51 @@ const updateVehiculo = async (patente, idTipoVehiculo,idModelo,idCliente, id) =>
   }
 };
 
+const filterByPatente = async (filtro) => {
+  try {
+    const query = queriesVehiculo.filterByPatente;
+    const [rows] = await db.query(query, [`%${filtro}%`]);
+    return rows;
+  } catch (err) {
+    throw err;
+  }
+};
+const orderByEstado = async () => {
+  try {
+    const [rows] = await db.query(queries.orderByEstado);
+    return rows;
+  } catch (err) {
+    throw err;
+  }
+};
+
+
+// const filterByModelo = async (filtro) => {
+//   try {
+//     const query = queriesVehiculo.filterByModelo;
+//     const [rows] = await db.query(query, [`%${filtro}%`]);
+//     return rows;
+//   } catch (err) {
+//     throw err;
+//   }
+// };
+// const filterByTipoVeh = async (filtro) => {
+//   try {
+//     const query = queriesVehiculo.filterByTipoVeh;
+//     const [rows] = await db.query(query, [`%${filtro}%`]);
+//     return rows;
+//   } catch (err) {
+//     throw err;
+//   }
+// };
+
+
 module.exports = {
   getAllVehiculos,
   createVehiculo,
   dropVehiculo,
   updateVehiculo,
-}
+  upVehiculo,
+  orderByEstado,
+  filterByPatente,
+};

@@ -1,155 +1,272 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Admin</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../administrador/css.css">
-    <link rel="stylesheet" href="../administrador/modal.css">
-</head>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="../administrador/css.css" />
+    <link rel="stylesheet" href="../administrador/modal.css" />
+  </head>
 
-<body>
+  <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark d-lg-none">
-        <a class="navbar-brand" href="#">
-            <img src="../img/Logosoftware.png" alt="Logo Lavadero" width="30" height="30"
-                class="d-inline-block align-top"> Lavadero
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item active"><a class="nav-link" href="#inicio" onclick="mostrarInicio()"
-                        id="inicio">Inicio</a></li>
-                <li class="nav-item"><a class="nav-link" href="#servicios" onclick="mostrarServicios()"
-                        id="servicios">Servicios</a></li>
-                <li class="nav-item"><a class="nav-link" href="#clientes" onclick="mostrarClientes()"
-                        id="clientes">Clientes</a></li>
-                <li class="nav-item"><a class="nav-link" href="#vehiculos" onclick="mostrarVehiculos()"
-                        id="vehiculos">Vehiculos</a></li>
-                <li class="nav-item"><a class="nav-link" href="#estadisticas" onclick="mostrarEstadisticas()"
-                        id="estadisticas">Estadisticas</a></li>
-                <li class="nav-item"><a class="nav-link" href="../PaginaPrincipal/index.html">Volver</a></li>
-            </ul>
-        </div>
+      <a class="navbar-brand" href="#">
+        <img
+          src="../img/Logosoftware.png"
+          alt="Logo Lavadero"
+          width="30"
+          height="30"
+          class="d-inline-block align-top"
+        />
+        Lavadero
+      </a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a
+              class="nav-link"
+              href="#inicio"
+              onclick="mostrarInicio()"
+              id="inicio"
+              >Inicio</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              href="#servicios"
+              onclick="mostrarServicios()"
+              id="servicios"
+              >Servicios</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              href="#clientes"
+              onclick="mostrarClientes()"
+              id="clientes"
+              >Clientes</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              href="#vehiculos"
+              onclick="mostrarVehiculos()"
+              id="vehiculos"
+              >Vehiculos</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              href="#estadisticas"
+              onclick="mostrarEstadisticas()"
+              id="estadisticas"
+              >Estadisticas</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../PaginaPrincipal/index.html">Volver</a>
+          </li>
+        </ul>
+      </div>
     </nav>
 
     <div class="container-fluid">
-        <div class="row">
-            <nav class="col-md-3 col-lg-2 d-md-block bg-dark sidebar d-none d-lg-block">
-                <div class="text-center mt-3">
-                    <img src="../img/Logosoftware.png" alt="Logo Lavadero" width="50" height="50">
-                    <h4 class="text-white">Lavadero</h4>
-                </div>
-                <ul class="nav flex-column">
-                    <li class="nav-item"><a class="nav-link" href="#" id="inicio" onclick="mostrarInicio()">Inicio</a>
-                    </li>
-                    <li class="nav-item"><a class="nav-link" href="#" id="servicios"
-                            onclick="mostrarServicios()">Servicios</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#" id="clientes"
-                            onclick="mostrarClientes()">Clientes</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#" id="vehiculos"
-                            onclick="mostrarVehiculos()">Vehiculos</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#" id="estadisticas"
-                            onclick="mostrarEstadisticas()">Estadisticas</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../PaginaPrincipal/index.html">Volver</a></li>
-                </ul>
-            </nav>
-            <main class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
-                <h2 class="mt-3" id="titulo">Bienvenido al software del lavadero</h2>
-                <p id="parrafo">Este es el software de mi lavadero.</p>
-                <div id="tablaContainer"></div>
-                <button id="openModalBtn" style="display: none;">Agregar Vehiculo</button>
-                <div id="myModal" class="modal">
-                    <div class="modal-content">
-                        <span class="close" id="closeModalBtn">&times;</span>
-                        <h2 id="tituloModal">Agregar vehiculo</h2>
-                        <form id="modalForm">
-                            <label for="patente">Patente:</label>
-                            <input type="text" id="patente" name="patente" required>
-                            <br>
-                            <label for="tipoVehiculos">Tipo de Vehiculo</label>
-                            <select id="tipoVehiculos">
-                                <option value="chata">Chata</option>
-                                <option value="chata">Auto</option>
-                            </select>
-                            <br>
-                            <label for="tipoModelo">Modelo</label>
-                            <select id="tipoModelo">
-                                <option value=""></option>
-                            </select>
-                            <br>
-                            <label for="tipoCliente">Cliente</label>
-                            <select id="tipoCliente">
-                                <option value=""></option>
-                            </select>
-                            <br>
-                            <button id="btnEnviar" type="submit">Agregar</button>
-                        </form>
-                    </div>
-                </div>
-                <button id="openModalServiceBtn" style="display: none;">Agregar servicio</button>
-                <div id="servicioModal" class="modal">
-                    <div class="modal-content">
-                        <span class="close" id="closeServiceModalBtn">&times;</span>
-                        <h2 id="tituloServicioModal">Agregar Servicio</h2>
-                        <form id="modalFromServicio">
-                            <label for="nombreServicio">Nombre:</label>
-                            <input type="text" id="nombreServicio" name="nombreServicio" required>
-                            <br>
-                            <label for="costo">Costo:</label>
-                            <input type="number" id="costo" name="costo" required>
-                            <br>
-                            <label for="tipoVehiculosServicio">Tipo de Vehiculo</label>
-                            <select id="tipoVehiculosServicio">
-                                <option value="chata">Chata</option>
-                                <option value="chata">Auto</option>
-                            </select>
-                            <br>
-                            <button id="btnEnviarServicio" type="submit">Agregar</button>
-                        </form>
-                    </div>
-                </div>
-                <button id="openModalClienteBtn" style="display: none;">Agregar cliente</button>
-                <div id="clienteModal" class="modal">
-                    <div class="modal-content">
-                        <span class="close" id="closeClienteModalbtn">&times;</span>
-                        <h2 id="tituloClienteModal">Agregar cliente</h2>
-                        <form id="modalFromCliente">
-                            <label for="nombreCliente">Nombre:</label>
-                            <input type="text" id="nombreCliente" name="nombreCliente" required autocomplete="off">
-                            <br>
-                            <label for="apellido">Apellido:</label>
-                            <input type="text" id="apellido" name="apellido" required autocomplete="off">
-                            <br>
-                            <label for="localidad">Localidad</label>
-                            <select id="localidad">
-                                <option value="villaMaria">Villa Maria</option>
-                                <option value="villaNueva">Villa Nueva</option>
-                                <option value="tioPujio">Tio Pujio</option>
-                            </select>
-                            <br>
-                            <button id="btnEnviarCliente" type="submit">Agregar</button>
-                        </form>
-                    </div>
-                </div>
-            </main>
-        </div>
+      <div class="row">
+        <nav
+          class="col-md-3 col-lg-2 d-md-block bg-dark sidebar d-none d-lg-block"
+        >
+          <div class="text-center mt-3">
+            <img
+              src="../img/Logosoftware.png"
+              alt="Logo Lavadero"
+              width="50"
+              height="50"
+            />
+            <h4 class="text-white">Lavadero</h4>
+          </div>
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <a class="nav-link" id="inicio" onclick="mostrarInicio()"
+                >Inicio</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="servicios" onclick="mostrarServicios()"
+                >Servicios</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="clientes" onclick="mostrarClientes()"
+                >Clientes</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="vehiculos" onclick="mostrarVehiculos()"
+                >Vehículos</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="registro" onclick="mostrarRegistros()"
+                >Registro</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                id="estadisticas"
+                onclick="mostrarEstadisticas()"
+                >Estadísticas</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../PaginaPrincipal/index.html"
+                >Volver</a
+              >
+            </li>
+          </ul>
+        </nav>
+        <main class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+          <h2 class="mt-3" id="titulo">Bienvenido al software del lavadero</h2>
+          <p id="parrafo">Ingresaste como</p>
+          <div id="busqueda" style="display: none">
+            <label for="parametro" id="parametroLabel"></label>
+            <input type="text" id="parametro" />
+            <button id="buscarParametro">Buscar</button>
+          </div>
+          <button id="orderByEstado" style="display: none">
+            Ordenar por estado
+          </button>
+          <button id="openModalServiceBtn" style="display: none">
+            Agregar servicio
+          </button>
+          <button id="openModalClienteBtn" style="display: none">
+            Agregar cliente
+          </button>
+          <button id="openModalBtn" style="display: none">
+            Agregar Vehiculo
+          </button>
+          <div id="tablaContainer"></div>
+          <div id="myModal" class="modal">
+            <div class="modal-content">
+              <span class="close" id="closeModalBtn">&times;</span>
+              <h2 id="tituloModal">Agregar vehiculo</h2>
+              <form id="modalForm">
+                <label for="patente">Patente:</label>
+                <input type="text" id="patente" name="patente" required />
+                <br />
+                <label for="tipoVehiculos">Tipo de Vehiculo</label>
+                <select id="tipoVehiculos">
+                  <option value="chata">Chata</option>
+                  <option value="chata">Auto</option>
+                </select>
+                <br />
+                <label for="tipoModelo">Modelo</label>
+                <select id="tipoModelo">
+                  <option value=""></option>
+                </select>
+                <br />
+                <label for="tipoCliente">Cliente</label>
+                <select id="tipoCliente">
+                  <option value=""></option>
+                </select>
+                <br />
+                <button id="btnEnviar" type="submit">Agregar</button>
+              </form>
+            </div>
+          </div>
+          <div id="servicioModal" class="modal">
+            <div class="modal-content">
+              <span class="close" id="closeServiceModalBtn">&times;</span>
+              <h2 id="tituloServicioModal">Agregar Servicio</h2>
+              <form id="modalFromServicio">
+                <label for="nombreServicio">Nombre:</label>
+                <input
+                  type="text"
+                  id="nombreServicio"
+                  name="nombreServicio"
+                  required
+                />
+                <br />
+                <label for="costo">Costo:</label>
+                <input type="number" id="costo" name="costo" required />
+                <br />
+                <label for="tipoVehiculosServicio">Tipo de Vehiculo</label>
+                <select id="tipoVehiculosServicio">
+                  <option value="chata">Chata</option>
+                  <option value="chata">Auto</option>
+                </select>
+                <br />
+                <button id="btnEnviarServicio" type="submit">Agregar</button>
+              </form>
+            </div>
+          </div>
+          <div id="clienteModal" class="modal">
+            <div class="modal-content">
+              <span class="close" id="closeClienteModalbtn">&times;</span>
+              <h2 id="tituloClienteModal">Agregar cliente</h2>
+              <form id="modalFromCliente">
+                <label for="nombreCliente">Nombre:</label>
+                <input
+                  type="text"
+                  id="nombreCliente"
+                  name="nombreCliente"
+                  required
+                  autocomplete="off"
+                />
+                <br />
+                <label for="apellido">Apellido:</label>
+                <input
+                  type="text"
+                  id="apellido"
+                  name="apellido"
+                  required
+                  autocomplete="off"
+                />
+                <br />
+                <label for="localidad">Localidad</label>
+                <select id="localidad">
+                  <option value="villaMaria">Villa Maria</option>
+                  <option value="villaNueva">Villa Nueva</option>
+                  <option value="tioPujio">Tio Pujio</option>
+                </select>
+                <br />
+                <button id="btnEnviarCliente" type="submit">Agregar</button>
+              </form>
+            </div>
+          </div>
+        </main>
+      </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="../administrador/indexClientes.js"></script>
     <script src="../administrador/indexInicio.js"></script>
+    <script src="../administrador/indexClientes.js"></script>
+
     <script src="../administrador/indexServ.js"></script>
     <script src="../administrador/indexVehiculos.js"></script>
     <script src="../administrador/modal.js"></script>
     <script src="../administrador/modalServicios.js"></script>
     <script src="../administrador/modalCliente.js"></script>
-</body>
-
+  </body>
 </html>

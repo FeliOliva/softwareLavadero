@@ -1,8 +1,7 @@
-const express = require('express');
+const express = require("express");
 const app = express();
-const db = require('./database');
+const db = require("./database");
 const cors = require("cors"); // Importa el módulo cors
-
 
 // Habilita CORS para todas las rutas, con esta sentencia permite todo
 app.use(cors());
@@ -12,8 +11,20 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Rutas
-const Routes = require('./routes/Routes');
-app.use('/api', Routes);
+const RoutesUsuarios = require("../back/routes/RoutesUsuarios");
+const RoutesClientes = require("../back/routes/RoutesClientes");
+const RoutesServicios = require("../back/routes/RoutesServicios");
+const RoutesVehiculos = require("../back/routes/RoutesVehiculos");
+const RoutesOtros = require("../back/routes/RoutesOtros");
+
+app.use(
+  "/api",
+  RoutesClientes,
+  RoutesOtros,
+  RoutesServicios,
+  RoutesUsuarios,
+  RoutesVehiculos
+);
 
 // Puerto para escuchar las peticiones
 const port = 3000;

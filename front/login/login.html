@@ -1,26 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="./css.css">
-</head>
+    <link rel="stylesheet" href="./css.css" />
+  </head>
 
-<body>
+  <body>
     <div class="container">
-        <div class="login wrap">
-            <div class="h1">Login</div>
-            <input
-                pattern="^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"
-                placeholder="usuario" id="usuario" name="usuario" type="text">
-            <input placeholder="Password" id="password" name="password" type="password">
-            <input value="Login" class="btn" id="loginButton" type="submit">
-        </div>
+      <div class="login wrap">
+        <div class="h1">Login</div>
+        <input
+          pattern="^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"
+          placeholder="usuario"
+          id="usuario"
+          name="usuario"
+          type="text"
+        />
+        <input
+          placeholder="Password"
+          id="password"
+          name="password"
+          type="password"
+        />
+        <input value="Login" class="btn" id="loginButton" type="submit" />
+      </div>
     </div>
-
-</body>
-<script src="./login.js"></script>
-
+  </body>
+  <script src="./login.js"></script>
+  <script src="../administrador/indexClientes.js"></script>
 </html>
