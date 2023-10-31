@@ -46,6 +46,7 @@ async function mostrarInicio() {
   openModalBtn.style.display = "none";
   openServicModalBtn.style.display = "none";
   openClienteModalBtn.style.display = "none";
+  openModalRegistroBtn.style.display = "none";
   tablaContainer.innerHTML = "";
   tituloContainer.textContent = "Bienvenido al software del lavadero";
   parrafoContainer.textContent = "Ingresaste como " + usuario;
@@ -55,6 +56,7 @@ async function mostrarInicio() {
 async function mostrarEstadisticas() {
   tablaContainer.innerHTML = "";
   openServicModalBtn.style.display = "none";
+  openModalRegistroBtn.style.display = "none";
   openModalBtn.style.display = "none";
   openClienteModalBtn.style.display = "none";
   tituloContainer.textContent = "Estadisticas";

@@ -76,6 +76,15 @@
           <li class="nav-item">
             <a
               class="nav-link"
+              href="#Registros"
+              onclick="mostrarRegistros()"
+              id="registros"
+              >Registros</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
               href="#estadisticas"
               onclick="mostrarEstadisticas()"
               id="estadisticas"
@@ -126,7 +135,7 @@
             </li>
             <li class="nav-item">
               <a class="nav-link" id="registro" onclick="mostrarRegistros()"
-                >Registro</a
+                >Registros</a
               >
             </li>
             <li class="nav-item">
@@ -163,6 +172,9 @@
           </button>
           <button id="openModalBtn" style="display: none">
             Agregar Vehiculo
+          </button>
+          <button id="openModalRegistroBtn" style="display: none">
+            Agregar Registro
           </button>
           <div id="tablaContainer"></div>
           <div id="myModal" class="modal">
@@ -253,6 +265,48 @@
               </form>
             </div>
           </div>
+          <!-- ----------------------------------------------------------------------------------- -->
+          <div id="registroModal" class="modal">
+            <div class="modal-content">
+              <span class="close" id="closeRegistroModalbtn">&times;</span>
+              <h2 id="tituloRegistroModal">Agregar registro</h2>
+              <form id="modalFormRegistro">
+                <label for="horaRegistro">Hora:</label>
+                <input
+                  type="time"
+                  id="horaRegistro"
+                  name="horaRegistro"
+                  required
+                  autocomplete="off"
+                />
+                <br />
+                <label for="fechaRegistro">Fecha del registro:</label>
+                <input
+                  type="date"
+                  id="fechaRegistro"
+                  name="fechaRegistro"
+                  required
+                  autocomplete="off"
+                />
+                <br />
+                <label for="clienteRegistro">Cliente</label>
+                <select id="clienteRegistro">
+                  <option value=""></option>
+                </select>
+                <br />
+                <label for="vehiculoRegistro">Vehiculo</label>
+                <select id="vehiculoRegistro">
+                  <option value=""></option>
+                </select>
+                <br />
+                <label for="servicioRegistro">Servicio</label>
+                <select id="servicioRegistro">
+                  <option value=""></option>
+                </select>
+                <button id="btnEnviarRegistro" type="submit">Guardar</button>
+              </form>
+            </div>
+          </div>
         </main>
       </div>
     </div>
@@ -262,11 +316,12 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="../administrador/indexInicio.js"></script>
     <script src="../administrador/indexClientes.js"></script>
-
+    <script src="../administrador/indexRegistros.js"></script>
     <script src="../administrador/indexServ.js"></script>
     <script src="../administrador/indexVehiculos.js"></script>
     <script src="../administrador/modal.js"></script>
     <script src="../administrador/modalServicios.js"></script>
     <script src="../administrador/modalCliente.js"></script>
+    <script src="../administrador/modalRegistros.js"></script>
   </body>
 </html>

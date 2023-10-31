@@ -1,5 +1,6 @@
 async function mostrarVehiculos() {
   divBuscar.style.display = "block";
+  openModalRegistroBtn.style.display = "none";
   openModalBtn.style.display = "block";
   openServicModalBtn.style.display = "none";
   openClienteModalBtn.style.display = "none";
@@ -8,6 +9,8 @@ async function mostrarVehiculos() {
   parrafoContainer.textContent = "Estos son tus vehiculos";
   labelBuscar.textContent = "Buscar por patente";
   ordenar.style.display = "block";
+  let inputParametro = document.getElementById("parametro");
+  inputParametro.type = "text";
   fetch("http://localhost:3000/api/vehiculos/")
     .then((response) => response.json())
     .then((data) => {
@@ -257,8 +260,8 @@ function actualizarTablaVehiculos(datos) {
   while (tbody.rows.length > 0) {
     tbody.deleteRow(0);
   }
-
   datos.forEach((registro) => {
+    console.log(registro);
     let fila = tbody.insertRow(-1);
 
     let idCell = fila.insertCell(0);

@@ -16,6 +16,7 @@ const RoutesClientes = require("../back/routes/RoutesClientes");
 const RoutesServicios = require("../back/routes/RoutesServicios");
 const RoutesVehiculos = require("../back/routes/RoutesVehiculos");
 const RoutesOtros = require("../back/routes/RoutesOtros");
+const RoutesRegistros = require("../back/routes/RoutesRegistros");
 
 app.use(
   "/api",
@@ -23,7 +24,8 @@ app.use(
   RoutesOtros,
   RoutesServicios,
   RoutesUsuarios,
-  RoutesVehiculos
+  RoutesVehiculos,
+  RoutesRegistros
 );
 
 // Puerto para escuchar las peticiones

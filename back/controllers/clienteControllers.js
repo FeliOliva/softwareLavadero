@@ -5,7 +5,7 @@ const getAllClientes = async (req, res) => {
     const clientes = await clienteModel.getAllClientes();
     res.json(clientes);
   } catch (err) {
-    res.status(500).json({ error: "Error al obtener vehículos." });
+    res.status(500).json({ error: "Error al obtener los clientes." });
   }
 };
 

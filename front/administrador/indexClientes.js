@@ -3,11 +3,14 @@ async function mostrarClientes() {
   openModalBtn.style.display = "none";
   openServicModalBtn.style.display = "none";
   openClienteModalBtn.style.display = "block";
+  openModalRegistroBtn.style.display = "none";
   tablaContainer.innerHTML = "";
   tituloContainer.textContent = "Clientes";
   parrafoContainer.textContent = "Estos son tus clientes";
   labelBuscar.textContent = "Buscar por nombre o apellido";
   ordenar.style.display = "block";
+  let inputParametro = document.getElementById("parametro");
+  inputParametro.type = "text";
   await fetch("http://localhost:3000/api/clientes/")
     .then((response) => response.json())
     .then((data) => {
@@ -208,13 +211,21 @@ async function mostrarClientes() {
 function actualizarTablaClientes(datos) {
   let tabla = document.getElementById("miTabla");
   let tbody = tabla.getElementsByTagName("tbody")[0];
-
   // Elimina todas las filas existentes en el tbody.
   while (tbody.rows.length > 0) {
     tbody.deleteRow(0);
   }
-
+  console.log(datos);
   datos.forEach((registro) => {
+    let idlocalidad = registro.idLocalidad;
+    let localidad;
+    if (idlocalidad === 1) {
+      localidad = "Villa Maria";
+    } else if (idlocalidad === 2) {
+      localidad = "Villa Nueva";
+    } else {
+      localidad = "Tio Pujio";
+    }
     let fila = tbody.insertRow(-1);
 
     let idCell = fila.insertCell(0);
@@ -227,7 +238,7 @@ function actualizarTablaClientes(datos) {
     tipoVehiculoCell.textContent = registro.apellido;
 
     let modeloCell = fila.insertCell(3);
-    modeloCell.textContent = registro.localidad;
+    modeloCell.textContent = localidad;
 
     let clienteCell = fila.insertCell(4);
     clienteCell.textContent = registro.estado;

@@ -1,5 +1,6 @@
 async function mostrarServicios() {
   divBuscar.style.display = "block";
+  openModalRegistroBtn.style.display = "none";
   tablaContainer.innerHTML = "";
   openModalBtn.style.display = "none";
   openClienteModalBtn.style.display = "none";
@@ -8,6 +9,8 @@ async function mostrarServicios() {
   parrafoContainer.textContent = "Estos son los servicios";
   labelBuscar.textContent = "Buscar por nombre";
   ordenar.style.display = "block";
+  let inputParametro = document.getElementById("parametro");
+  inputParametro.type = "text";
   fetch("http://localhost:3000/api/servicios/")
     .then((response) => response.json())
     .then((data) => {
