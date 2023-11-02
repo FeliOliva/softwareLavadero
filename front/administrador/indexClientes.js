@@ -83,10 +83,16 @@ async function mostrarClientes() {
           actualizarBtn.disabled = true;
         }
         actualizarBtn.addEventListener("click", function () {
-          tituloModalCliente.innerHTML = "Actualizar Cliente";
-          modalCliente.style.display = "block";
-          btnEnviarCliente.onclick = actualizarCliente();
-          btnEnviarCliente.innerHTML = "Actualizar";
+          if (registro.id) {
+            tituloModalCliente.innerHTML = "Actualizar Cliente";
+            modalCliente.style.display = "block";
+            btnEnviarCliente.onclick = function () {
+              actualizarCliente(registro.id);
+            };
+            btnEnviarCliente.innerHTML = "Actualizar";
+          } else {
+            alert("No se puede actualizar el cliente sin un ID válido.");
+          }
         });
 
         fila.appendChild(actualizarBtn);
@@ -249,12 +255,16 @@ function actualizarTablaClientes(datos) {
     let actualizarBtn = document.createElement("button");
     actualizarBtn.textContent = "Actualizar";
     actualizarBtn.addEventListener("click", function () {
-      tituloModalCliente.innerHTML = "Actualizar ClienteS";
-      modalCliente.style.display = "block";
-      btnEnviarCliente.onclick = function () {
-        actualizarCliente(registro.id);
-      };
-      btnEnviarCliente.innerHTML = "Actualizar";
+      if (registro.id) {
+        tituloModalCliente.innerHTML = "Actualizar Cliente";
+        modalCliente.style.display = "block";
+        btnEnviarCliente.onclick = function () {
+          actualizarCliente(registro.id);
+        };
+        btnEnviarCliente.innerHTML = "Actualizar";
+      } else {
+        alert("No se puede actualizar el cliente sin un ID válido.");
+      }
     });
     accionesCell.appendChild(actualizarBtn);
 
@@ -297,7 +307,7 @@ function actualizarTablaClientes(datos) {
   });
 }
 
-async function actualizarCliente() {
+async function actualizarCliente(id) {
   let localidad = document.getElementById("localidad").value;
   let idlocalidad;
   if (localidad === "villaMaria") {
@@ -311,7 +321,7 @@ async function actualizarCliente() {
     nombre: document.getElementById("nombreCliente").value,
     apellido: document.getElementById("apellido").value,
     idLocalidad: idlocalidad,
-    id: registro.id,
+    id: id,
   };
   console.log(dato);
   if (dato.nombre == "") {
@@ -449,10 +459,16 @@ async function ordenarxEstadoCliente() {
           actualizarBtn.disabled = true;
         }
         actualizarBtn.addEventListener("click", function () {
-          tituloModalCliente.innerHTML = "Actualizar Cliente";
-          modalCliente.style.display = "block";
-          btnEnviarCliente.onclick = actualizarCliente();
-          btnEnviarCliente.innerHTML = "Actualizar";
+          if (registro.id) {
+            tituloModalCliente.innerHTML = "Actualizar Cliente";
+            modalCliente.style.display = "block";
+            btnEnviarCliente.onclick = function () {
+              actualizarCliente(registro.id);
+            };
+            btnEnviarCliente.innerHTML = "Actualizar";
+          } else {
+            alert("No se puede actualizar el cliente sin un ID válido.");
+          }
         });
 
         fila.appendChild(actualizarBtn);

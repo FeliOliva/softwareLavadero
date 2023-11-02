@@ -100,10 +100,16 @@ async function mostrarRegistros() {
           actualizarBtn.disabled = true;
         }
         actualizarBtn.addEventListener("click", function () {
-          tituloModalRegistro.innerHTML = "Actualizar registro";
-          modalRegistro.style.display = "block";
-          btnEnviarRegistro.onclick = actualizarRegistro;
-          btnEnviarRegistro.innerHTML = "Actualizar";
+          if (valores.id) {
+            tituloModalRegistro.innerHTML = "Actualizar registro";
+            modalRegistro.style.display = "block";
+            btnEnviarRegistro.onclick = function () {
+              actualizarRegistro(valores.id);
+            };
+            btnEnviarRegistro.innerHTML = "Actualizar";
+          } else {
+            alert("No se puede actualizar el registro sin un ID válido.");
+          }
         });
 
         fila.appendChild(actualizarBtn);
@@ -368,14 +374,14 @@ function actualizarTablaRegistros(datos) {
     accionesCell.appendChild(upBtn);
   });
 }
-async function actualizarRegistro() {
+async function actualizarRegistro(id) {
   const dato = {
     hora: document.getElementById("horaRegistro").value,
     fecha: document.getElementById("fechaRegistro").value,
     idCliente: document.getElementById("clienteRegistro").value,
     idVehiculo: document.getElementById("vehiculoRegistro").value,
     idServicio: document.getElementById("servicioRegistro").value,
-    id: valores.id,
+    id: id,
   };
   console.log(dato);
   if (dato.hora == null || dato.fecha == null) {
@@ -534,10 +540,16 @@ async function ordenarxEstadoRegistros() {
         }
 
         actualizarBtn.addEventListener("click", function () {
-          tituloModalRegistro.innerHTML = "Actualizar registro";
-          modalRegistro.style.display = "block";
-          btnEnviarRegistro.onclick = actualizarRegistro;
-          btnEnviarRegistro.innerHTML = "Actualizar";
+          if (valores.id) {
+            tituloModalRegistro.innerHTML = "Actualizar registro";
+            modalRegistro.style.display = "block";
+            btnEnviarRegistro.onclick = function () {
+              actualizarRegistro(valores.id);
+            };
+            btnEnviarRegistro.innerHTML = "Actualizar";
+          } else {
+            alert("No se puede actualizar el registro sin un ID válido.");
+          }
         });
 
         fila.appendChild(actualizarBtn);

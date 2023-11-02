@@ -84,10 +84,18 @@ async function mostrarServicios() {
         }
 
         actualizarBtn.addEventListener("click", function () {
-          tituloModalServic.innerHTML = "Actualizar servicio";
-          modalServicio.style.display = "block";
-          btnEnviarServicio.onclick = actualizarServicio;
-          btnEnviarServicio.innerHTML = "actualizar";
+          if (registro.id) {
+            tituloModalServic.innerHTML = "Actualizar Servicios";
+            modalServicio.style.display = "block";
+            btnEnviarServicio.onclick = function () {
+              actualizarServicio(registro.id);
+            };
+            btnEnviarServicio.innerHTML = "Actualizar";
+          } else {
+            alert(
+              "No se puede actualizar el servicio sin un ID válido en el registro."
+            );
+          }
         });
 
         fila.appendChild(actualizarBtn);
@@ -244,13 +252,20 @@ function actualizarTablaServicios(datos) {
     let actualizarBtn = document.createElement("button");
     actualizarBtn.textContent = "Actualizar";
     actualizarBtn.addEventListener("click", function () {
-      tituloModalServic.innerHTML = "Actualizar Servicios";
-      modalServicio.style.display = "block";
-      btnEnviarServicio.onclick = function () {
-        actualizarCliente(registro.id);
-      };
-      btnEnviarServicio.innerHTML = "Actualizar";
+      if (registro.id) {
+        tituloModalServic.innerHTML = "Actualizar Servicios";
+        modalServicio.style.display = "block";
+        btnEnviarServicio.onclick = function () {
+          actualizarServicio(registro.id);
+        };
+        btnEnviarServicio.innerHTML = "Actualizar";
+      } else {
+        alert(
+          "No se puede actualizar el servicio sin un ID válido en el registro."
+        );
+      }
     });
+
     accionesCell.appendChild(actualizarBtn);
 
     let eliminarBtn = document.createElement("button");
@@ -290,6 +305,42 @@ function actualizarTablaServicios(datos) {
     }
     accionesCell.appendChild(upBtn);
   });
+}
+async function actualizarServicio(id) {
+  let tipoVehiculos = document.getElementById("tipoVehiculosServicio").value;
+  let idTipoVehiculo;
+  if (tipoVehiculos === "auto") {
+    idTipoVehiculo = 1;
+  } else {
+    idTipoVehiculo = 2;
+  }
+  const dato = {
+    nombre: document.getElementById("nombreServicio").value,
+    costo: document.getElementById("costo").value,
+    idTipoVehiculo: idTipoVehiculo,
+    id: id,
+  };
+  console.log(dato);
+  if (dato.nombre == "") {
+    alert("falta completar el nombre");
+  } else {
+    alert("Cliente actualizado correctamente");
+    await fetch(`http://localhost:3000/api/servicios/`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(dato),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Respuesta:", data);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+    mostrarServicios();
+  }
 }
 function upServicio(id) {
   fetch(`http://localhost:3000/api/servicios/up/${id}`, {
@@ -406,10 +457,18 @@ async function ordenarxEstadoServicios() {
         }
 
         actualizarBtn.addEventListener("click", function () {
-          tituloModalServic.innerHTML = "Actualizar servicio";
-          modalServicio.style.display = "block";
-          btnEnviarServicio.onclick = actualizarServicio;
-          btnEnviarServicio.innerHTML = "actualizar";
+          if (registro.id) {
+            tituloModalServic.innerHTML = "Actualizar Servicios";
+            modalServicio.style.display = "block";
+            btnEnviarServicio.onclick = function () {
+              actualizarServicio(registro.id);
+            };
+            btnEnviarServicio.innerHTML = "Actualizar";
+          } else {
+            alert(
+              "No se puede actualizar el servicio sin un ID válido en el registro."
+            );
+          }
         });
 
         fila.appendChild(actualizarBtn);

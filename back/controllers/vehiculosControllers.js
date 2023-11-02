@@ -42,6 +42,19 @@ const upVehiculo = async (req, res) => {
 const updateVehiculo = async (req, res) => {
   try {
     const { patente, idTipoVehiculo, idModelo, idCliente, id } = req.body;
+
+    if (!id) {
+      return res.status(400).json({
+        error: "Se requiere el campo 'id' para actualizar el vehículo.",
+      });
+    }
+
+    if (!patente || !idTipoVehiculo || !idModelo || !idCliente) {
+      return res.status(400).json({
+        error: "Faltan campos obligatorios para actualizar el vehículo.",
+      });
+    }
+
     await vehModel.updateVehiculo(
       patente,
       idTipoVehiculo,
@@ -49,9 +62,10 @@ const updateVehiculo = async (req, res) => {
       idCliente,
       id
     );
-    res.status(200).json({ message: "Vehiculo actualizado exitosamente." });
+
+    res.status(200).json({ message: "Vehículo actualizado exitosamente." });
   } catch (err) {
-    res.status(500).json({ error: "Error al actualizar el vehiculo." });
+    res.status(500).json({ error: "Error al actualizar el vehículo." });
   }
 };
 

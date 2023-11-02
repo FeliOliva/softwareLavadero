@@ -94,8 +94,15 @@ async function mostrarVehiculos() {
         actualizarBtn.addEventListener("click", function () {
           tituloModal.innerHTML = "Actualizar Vehiculo";
           modal.style.display = "block";
-          btnEnviar.onclick = actualizarVehiculo;
-          btnEnviar.innerHTML = "actualizar";
+
+          if (registro.id) {
+            btnEnviar.onclick = function () {
+              actualizarVehiculo(registro.id);
+            };
+            btnEnviar.innerHTML = "actualizar";
+          } else {
+            alert("No se puede actualizar el vehículo sin un ID válido.");
+          }
         });
 
         fila.appendChild(actualizarBtn);
@@ -290,11 +297,16 @@ function actualizarTablaVehiculos(datos) {
     actualizarBtn.addEventListener("click", function () {
       tituloModal.innerHTML = "Actualizar Vehiculo";
       modal.style.display = "block";
-      btnEnviar.onclick = function () {
-        actualizarVehiculo(registro.id);
-      };
-      btnEnviar.innerHTML = "Actualizar";
+      if (registro.id) {
+        btnEnviar.onclick = function () {
+          actualizarVehiculo(registro.id);
+        };
+        btnEnviar.innerHTML = "actualizar";
+      } else {
+        alert("No se puede actualizar el vehículo sin un ID válido.");
+      }
     });
+
     accionesCell.appendChild(actualizarBtn);
 
     let eliminarBtn = document.createElement("button");
@@ -383,7 +395,7 @@ async function actualizarVehiculo(id) {
     idCliente: parseInt(document.getElementById("tipoCliente").value),
     idTipoVehiculo: idTipoVehiculo,
     idModelo: parseInt(document.getElementById("tipoModelo").value),
-    id: registro.id,
+    id: id,
   };
   console.log(dato);
   if (dato.patente == "") {
@@ -501,8 +513,14 @@ async function ordenarxEstado() {
         actualizarBtn.addEventListener("click", function () {
           tituloModal.innerHTML = "Actualizar Vehiculo";
           modal.style.display = "block";
-          btnEnviar.onclick = actualizarVehiculo;
-          btnEnviar.innerHTML = "actualizar";
+          if (registro.id) {
+            btnEnviar.onclick = function () {
+              actualizarVehiculo(registro.id);
+            };
+            btnEnviar.innerHTML = "actualizar";
+          } else {
+            alert("No se puede actualizar el vehículo sin un ID válido.");
+          }
         });
 
         fila.appendChild(actualizarBtn);
