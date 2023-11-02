@@ -288,40 +288,43 @@ function actualizarTablaRegistros(datos) {
   while (tbody.rows.length > 0) {
     tbody.deleteRow(0);
   }
-  datos.forEach((valores) => {
-    console.log(valores);
+  var arrayDeDatos = [datos];
+
+  arrayDeDatos.forEach((registro) => {
+    console.log(registro);
     let fila = tbody.insertRow(-1);
 
     let idCell = fila.insertCell(0);
-    idCell.textContent = valores.id;
+    idCell.textContent = registro.id;
 
     let horaCell = fila.insertCell(1);
-    horaCell.textContent = valores.hora;
+    horaCell.textContent = registro.hora;
 
     let fechaCell = fila.insertCell(2);
-    fechaCell.textContent = valores.fecha;
+    fechaCell.textContent = registro.fecha;
 
     let clienteCell = fila.insertCell(3);
-    clienteCell.textContent = valores.idCliente;
+    clienteCell.textContent = registro.idCliente;
 
     let vehiculoCell = fila.insertCell(4);
-    vehiculoCell.textContent = valores.idVehiculo;
+    vehiculoCell.textContent = registro.idVehiculo;
 
     let servicioCell = fila.insertCell(5);
-    servicioCell.textContent = valores.idServicio;
+    servicioCell.textContent = registro.idServicio;
 
     let estadoCell = fila.insertCell(6);
-    estadoCell.textContent = valores.estado;
+    estadoCell.textContent = registro.estado;
+
     // Agregar botones
     let accionesCell = fila.insertCell(7);
 
     let actualizarBtn = document.createElement("button");
     actualizarBtn.textContent = "Actualizar";
     actualizarBtn.addEventListener("click", function () {
-      tituloModalRegistro.innerHTML = "Actualizar registros";
+      tituloModalRegistro.innerHTML = "Actualizar Vehiculo";
       modalRegistro.style.display = "block";
       btnEnviarRegistro.onclick = function () {
-        actualizarRegistro(valores.id);
+        actualizarRegistro(registro.id);
       };
       btnEnviarRegistro.innerHTML = "Actualizar";
     });
@@ -330,12 +333,12 @@ function actualizarTablaRegistros(datos) {
     let eliminarBtn = document.createElement("button");
     eliminarBtn.textContent = "Eliminar";
     eliminarBtn.addEventListener("click", function () {
-      if (valores.estado !== "eliminado") {
+      if (registro.estado !== "eliminado") {
         const confirmar = confirm(
-          "¿Estás seguro de que deseas eliminar estos registros?"
+          "¿Estás seguro de que deseas eliminar este registro?"
         );
         if (confirmar) {
-          eliminarRegistro(valores.id);
+          eliminarRegistro(registro.id);
         }
       }
     });
@@ -344,17 +347,17 @@ function actualizarTablaRegistros(datos) {
     let upBtn = document.createElement("button");
     upBtn.textContent = "Activar";
     upBtn.addEventListener("click", function () {
-      if (valores.estado === "eliminado") {
+      if (registro.estado === "eliminado") {
         const confirmar = confirm(
-          "¿Estás seguro de que deseas activar estos registros?"
+          "¿Estás seguro de que deseas activar este registro?"
         );
         if (confirmar) {
-          upRegistro(valores.id);
+          upRegistro(registro.id);
         }
       }
     });
 
-    if (valores.estado === "eliminado" || !esAdmin) {
+    if (registro.estado === "eliminado" || !esAdmin) {
       actualizarBtn.disabled = true;
       eliminarBtn.disabled = true;
       upBtn.disabled = !esAdmin;
@@ -365,7 +368,6 @@ function actualizarTablaRegistros(datos) {
     accionesCell.appendChild(upBtn);
   });
 }
-
 async function actualizarRegistro() {
   const dato = {
     hora: document.getElementById("horaRegistro").value,
@@ -442,7 +444,7 @@ async function ordenarxEstadoRegistros() {
   openModalRegistroBtn.style.display = "block";
   ordenar.style.display = "block";
 
-  await fetch("http://localhost:3000/api/registros/")
+  await fetch("http://localhost:3000/api/registros/orderByEstado")
     .then((response) => response.json())
     .then((data) => {
       console.log(data);
